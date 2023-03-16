@@ -1,0 +1,73 @@
+
+1. Créez une classe Animal avec les attributs suivants :
+'race' (str) : La race de l'animal.
+'taille' (int) : La taille e de l'animal.
+'poids' (float) : Le poids de l'animal en kilogrammes.
+'sante' (str) : La santé de l'animal (ex: en bonne santé, malade).
+
+2. Créez une classe Enclos avec les attributs suivants :
+'nom' (str) : Le nom de l'enclos.
+'type' (str) : Le type d'enclos (ex: terrestre, aquatique).
+'capacite' (int) : La capacité de l'enclos en nombre d'animaux.
+'animaux' (list) : La liste des animaux dans l'enclos.
+Cette classe doit avoir des méthodes pour ajouter un animal dans l'enclos, supprimer un animal de l'enclos et afficher la liste des animaux dans l'enclos.
+
+
+3. Créez une classe Zoo avec les attributs suivants :
+'nom' (str) : Le nom du zoo.
+'enclos' (list) : La liste des enclos dans le zoo.
+
+Cette classe doit avoir des méthodes pour ajouter un enclos au zoo, supprimer un enclos du zoo et afficher la liste des enclos dans le zoo.
+
+4. Créez une fonction main qui crée un zoo, ajoute des enclos et des animaux aux enclos.
+
+5. Ajoutez une méthode nourrir à la classe Animal qui modifie la santé de l'animal.
+
+6. Ajoutez une méthode nourrir_animaux à la classe Enclos qui nourrit tous les animaux dans l'enclos.
+
+7. Ajoutez une méthode nourrir_animaux à la classe Zoo qui nourrit tous les animaux dans tous les enclos du zoo.
+
+8. Ajoutez une classe Employe avec les méthodes suivantes :
+
+'ajouter_animal(animal, enclos)' : ajoute un animal à un enclos.
+'supprimer_animal(animal, enclos)' : supprime un animal d'un enclos.
+'ajouter_enclos(enclos, zoo)' : ajoute un enclos au zoo.
+'supprimer_enclos(enclos, zoo)' : supprime un enclos du zoo.
+'gerer_interactions(animal, enclos)' : gère les interactions entre les animaux et les enclos.
+
+--- COPIE COLLE ----
+
+   <div class="container">
+        <!-- Boucle sur les animaux stockés en base de données -->
+        <?php foreach ($animals as $animal) : ?>
+            <div class="animal">
+                <h3><?= $animal['species'] ?></h3>
+                <p>Poids : <?= $animal['weight'] ?> kg</p>
+                <p>Taille : <?= $animal['size'] ?> m</p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    
+       <!-- Afficher Animaux et Enclos -->
+    
+    $zoo = new Zoo($db);
+
+    $enclosures = $zoo->getEnclosures();
+    foreach ($enclosures as $enclosure) {
+        echo "Enclosure name: " . $enclosure->getName() . "<br>";
+        echo "max_animals: " . $enclosure->getMax_animals() . "<br>";
+        echo "animal_types: " . $enclosure->getAnimal_types() . "<br><br>";
+    }
+
+    $enclosures = $zoo->getEnclosures();
+    foreach ($enclosures as $enclosure) {
+        echo "Enclosure name: " . $enclosure->getName() . "<br>";
+        $animals = $enclosure->getAnimals();
+        foreach ($animals as $animal) {
+            echo "Animal species: " . $animal->getSpecies() . "<br>";
+            echo "Animal weight: " . $animal->getWeight() . "<br>";
+            echo "Animal size: " . $animal->getSize() . "<br><br>";
+        }
+    }
+ 
+    <!-- Fin Afficher Animaux et Enclos -->
